@@ -1,4 +1,3 @@
-# Use an official WordPress image as the base image
 FROM wordpress:latest
 
 # Set environment variables for WordPress
@@ -13,4 +12,8 @@ EXPOSE 8080
 # Copy the custom configuration file
 COPY ./wp-config.php /var/www/html/wp-config.php
 
-CMD ["apache2-foreground"]
+# Start the PHP-FPM daemon
+CMD ["php-fpm"]
+
+# Set the port environment variable
+ENV PORT 8080
