@@ -12,3 +12,5 @@ EXPOSE 8080
 
 # Copy the custom configuration file
 COPY ./wp-config.php /var/www/html/wp-config.php
+
+CMD ["apache2-foreground"]
