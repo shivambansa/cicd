@@ -13,7 +13,7 @@ COPY ./wp-config.php /var/www/html/wp-config.php
 EXPOSE 8080
 
 # Start the PHP-FPM daemon
-CMD ["php-fpm"]
+CMD ["apache2-foreground"]
 
 # Set the port environment variable
 ENV PORT 8080
