@@ -6,11 +6,11 @@ ENV WORDPRESS_DB_USER root
 ENV WORDPRESS_DB_PASSWORD root
 ENV WORDPRESS_DB_NAME shivam
 
-# Expose port 80
-EXPOSE 8080
-
 # Copy the custom configuration file
 COPY ./wp-config.php /var/www/html/wp-config.php
+
+# Expose port 80
+EXPOSE 8080
 
 # Start the PHP-FPM daemon
 CMD ["php-fpm"]
