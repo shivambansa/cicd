@@ -1,14 +1,14 @@
-# Let's get the base image of node14
-FROM node:14
-# Create app directory
-WORKDIR /usr/src/app
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-COPY package*.json ./
-# Install app dependencies
-RUN npm install
-# Bundle app source
-COPY . .
-# Binding port
-EXPOSE 8080
-# Command to run our app
-CMD [ "node", "server.js"]
+# Use an official WordPress image as the base image
+FROM wordpress:latest
+
+# Set environment variables for WordPress
+ENV WORDPRESS_DB_HOST your-cloud-sql-instance-connection-string
+ENV WORDPRESS_DB_USER your-db-username
+ENV WORDPRESS_DB_PASSWORD your-db-password
+ENV WORDPRESS_DB_NAME your-db-name
+
+# Expose port 80
+EXPOSE 80
+
+# Copy the custom configuration file
+COPY ./wp-config.php /var/www/html/wp-config.php
