@@ -8,7 +8,7 @@ ENV WORDPRESS_DB_PASSWORD your-db-password
 ENV WORDPRESS_DB_NAME your-db-name
 
 # Expose port 80
-EXPOSE 80
+EXPOSE 8080
 
 # Copy the custom configuration file
 COPY ./wp-config.php /var/www/html/wp-config.php
