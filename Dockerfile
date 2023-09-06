@@ -2,10 +2,10 @@
 FROM wordpress:latest
 
 # Set environment variables for WordPress
-ENV WORDPRESS_DB_HOST your-cloud-sql-instance-connection-string
-ENV WORDPRESS_DB_USER your-db-username
-ENV WORDPRESS_DB_PASSWORD your-db-password
-ENV WORDPRESS_DB_NAME your-db-name
+ENV WORDPRESS_DB_HOST 10.3.0.6:3306
+ENV WORDPRESS_DB_USER root
+ENV WORDPRESS_DB_PASSWORD root
+ENV WORDPRESS_DB_NAME shivam
 
 # Expose port 80
 EXPOSE 8080
