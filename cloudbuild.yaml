@@ -1,4 +1,4 @@
-substitutions:
+substitution:
   DEVELOPMENT: development
 
 steps:
