@@ -1,8 +1,9 @@
 steps:
 - name: gcr.io/cloud-builders/docker
-  args: ['build', '-t', 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}:${SHORT_SHA}', '.']
+  args: ['build', '--build-arg', 'MY_VARIABLE=${_MY_VARIABLE}', '-t', 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}:${SHORT_SHA}', '.']
+  substitutions:
+  _MY_VARIABLE: 'development'
   id: Building the container image
-  env : ['_DEVELOPMENT=development']
 # Push the container image to Container Registry
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}:${SHORT_SHA}']
