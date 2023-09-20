@@ -1,10 +1,8 @@
-substitutions:
-  _DEVELOPMENT: development
-
 steps:
 - name: gcr.io/cloud-builders/docker
   args: ['build', '-t', 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}:${SHORT_SHA}', '.']
   id: Building the container image
+  env : ['_DEVELOPMENT=development']
 # Push the container image to Container Registry
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}:${SHORT_SHA}']
