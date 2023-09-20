@@ -2,7 +2,8 @@
 FROM node:14
 # Create app directory
 WORKDIR /usr/src/app
-RUN echo ${_DEVELOPMENT}
+ENV DEVELOPMENT=$(_DEVELOPMENT)
+RUN echo $DEVELOPMENT
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 COPY package*.json ./
 # Install app dependencies
