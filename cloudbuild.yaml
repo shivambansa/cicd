@@ -1,5 +1,5 @@
 substitutions:
-  DEVELOPMENT: development
+  _DEVELOPMENT: development
 
 steps:
 - name: gcr.io/cloud-builders/docker
