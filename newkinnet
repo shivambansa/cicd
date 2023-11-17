@@ -1,7 +1,7 @@
 steps:
 # Build the container image
 - name: gcr.io/cloud-builders/docker
-  args: ['build', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/kinnet-docker-prod-repo/${_SERVICE_NAME}:${SHORT_SHA}', '.']
+  args: ['build', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/kinnet-docker-prod-repo/$COMMIT_SHA/${_SERVICE_NAME}:${SHORT_SHA}', '.']
   id: Building the container image
 # Push the container image to Container Registry
 - name: 'gcr.io/cloud-builders/docker'
