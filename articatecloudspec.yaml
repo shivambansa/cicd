@@ -1,0 +1,13 @@
+substitutions:
+    _MY_VARIABLE: development
+steps:
+- name: gcr.io/cloud-builders/docker
+  args: ['build', '--build-arg', 'MY_VARIABLE=${_MY_VARIABLE}', '-t', 'artifactregistry.googleapis.com/$PROJECT_ID/${_SERVICE_NAME}:${SHORT_SHA}', '.']
+  id: Building the container image
+# Push the container image to Artifact Registry
+- name: gcr.io/cloud-builders/docker
+  args: ['push', 'artifactregistry.googleapis.com/$PROJECT_ID/${_SERVICE_NAME}:${SHORT_SHA}']
+  id: Pushing the image to registry
+# Deploy container image to Cloud Run
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['run', 'deploy', '${_SERVICE_NAME}', '--image', 'artifactregistry.googleapis.com/$PROJECT_ID/${_SERVICE_NAME}:${SHORT_SHA}', '--region', 'asia-east1', '--platform', 'managed', "--allow-unauthenticated",'--port', '80', '--target-port', '8080']
